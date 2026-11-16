@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>弁証法的行動療法（DBT）実践リファレンス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B2A38; --navy-2:#24384A; --teal:#1E6E66; --teal-2:#2A8A80; --teal-pale:#E3F0EE;
+  --amber:#B97D33; --amber-2:#9A6526; --amber-pale:#F6EADA; --cream:#F6F1E7; --cream-2:#EFE7D8;
+  --rust:#9C4A3C; --rust-pale:#F5E3DF; --ink:#1B2A38; --muted:#5B6773; --line:#DDD3C2; --white:#FFFFFF;
+  --r:12px; --shadow:0 2px 10px rgba(27,42,56,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--cream);color:var(--ink);line-height:1.85;font-size:15.5px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Noto Serif JP',serif;line-height:1.45;color:var(--navy)}
+h2{font-size:1.6rem;margin-bottom:.4rem}
+h3{font-size:1.12rem;margin:1.6rem 0 .6rem}
+h4{font-size:.98rem;margin-bottom:.35rem;color:var(--navy)}
+p{margin-bottom:.9em}
+strong{color:var(--navy)}
+a{color:var(--teal)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+section{padding:64px 0;scroll-margin-top:96px}
+section.alt{background:var(--white)}
+.icon{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.22em;flex-shrink:0}
+
+/* progress + nav */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--teal),var(--amber));z-index:200}
+nav.toc{position:sticky;top:0;z-index:150;background:rgba(27,42,56,.97);backdrop-filter:blur(4px);border-bottom:1px solid rgba(255,255,255,.08)}
+.toc-inner{max-width:1100px;margin:0 auto;display:flex;gap:6px;overflow-x:auto;padding:9px 14px;scrollbar-width:thin}
+.toc-inner::-webkit-scrollbar{height:4px}
+.toc-inner::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:4px}
+.toc button{flex-shrink:0;background:transparent;border:1px solid rgba(255,255,255,.18);color:#D9E2E8;font:500 .76rem 'Noto Sans JP',sans-serif;padding:5px 11px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.2s}
+.toc button:hover{border-color:var(--amber);color:#fff}
+.toc button.active{background:var(--amber);border-color:var(--amber);color:#fff}
+
+/* hero */
+.hero{background:var(--navy);color:#EAF0F3;padding:76px 0 64px;position:relative;overflow:hidden}
+.hero h1{color:#fff;font-size:2.15rem;margin:.6rem 0 .3rem}
+.hero .en{color:#B9C7D1;font-size:.95rem;letter-spacing:.04em}
+.hero .eyebrow{color:#E9C38F}
+.hero-lead{margin-top:1.4rem;max-width:720px;font-size:1.04rem;color:#EAF0F3;border-left:3px solid var(--amber);padding-left:16px}
+.hero-lead strong{color:#fff}
+.hero svg.poles{position:absolute;right:-60px;top:20px;width:420px;opacity:.16;pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:.74rem;font-weight:700;letter-spacing:.14em;color:var(--teal);text-transform:uppercase}
+.rule{width:44px;height:3px;background:var(--amber);border-radius:2px;margin:10px 0 26px}
+.changelog{margin-top:26px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r)}
+.changelog button{width:100%;text-align:left;background:none;border:0;color:#fff;font:600 .9rem 'Noto Sans JP';padding:13px 16px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.changelog .body{display:none;padding:0 18px 16px;color:#DCE5EA;font-size:.88rem}
+.changelog.open .body{display:block}
+.changelog .body li{margin:0 0 6px 1.2em}
+.changelog .body strong{color:#fff}
+.changelog .chev{margin-left:auto;transition:.25s}
+.changelog.open .chev{transform:rotate(180deg)}
+
+/* common components */
+.card{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+section.alt .card{background:var(--cream)}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.callout{display:flex;gap:14px;border-radius:var(--r);padding:16px 18px;margin:20px 0;font-size:.93rem}
+.callout .icon{width:1.4em;height:1.4em;margin-top:2px}
+.callout p:last-child{margin-bottom:0}
+.c-teal{background:var(--teal-pale);border-left:4px solid var(--teal)} .c-teal .icon{color:var(--teal)}
+.c-amber{background:var(--amber-pale);border-left:4px solid var(--amber)} .c-amber .icon{color:var(--amber-2)}
+.c-rust{background:var(--rust-pale);border-left:4px solid var(--rust)} .c-rust .icon{color:var(--rust)}
+.c-navy{background:var(--navy);color:#E6EDF1;border-left:4px solid var(--amber)} .c-navy strong{color:#fff} .c-navy .icon{color:#E9C38F}
+.badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 9px;border-radius:999px;letter-spacing:.04em;vertical-align:2px;margin-left:6px;white-space:nowrap}
+.b-hi{background:var(--teal);color:#fff}
+.b-mid{background:var(--amber);color:#fff}
+.b-lo{background:var(--rust);color:#fff}
+.b-note{background:var(--cream-2);color:var(--navy);border:1px solid var(--line)}
+.muted{color:var(--muted)}
+.mb0{margin-bottom:0}
+.small{font-size:.85rem}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:1px 8px;border-radius:5px;background:var(--cream-2);color:var(--navy);margin-right:4px}
+.fade{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.fade.in{opacity:1;transform:none}
+ul.clean{list-style:none}
+ul.clean li{position:relative;padding-left:1.15em;margin-bottom:.45em}
+ul.clean li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--amber)}
+
+/* why cards */
+.why-card .ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--teal-pale);color:var(--teal);margin-bottom:10px}
+.why-card .ico .icon{width:22px;height:22px}
+
+/* timeline */
+.timeline{position:relative;padding-left:28px;margin-top:10px}
+.timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl{position:relative;margin-bottom:18px}
+.tl::before{content:"";position:absolute;left:-25px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--white);border:3px solid var(--teal)}
+.tl.jp::before{border-color:var(--amber)}
+.tl .yr{font-weight:700;font-size:.8rem;color:var(--teal);letter-spacing:.05em}
+.tl.jp .yr{color:var(--amber-2)}
+.tl p{margin:0;font-size:.92rem}
+
+/* biosocial diagram */
+.diagram{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:18px 0}
+.diagram svg{width:100%;height:auto;display:block}
+.diagram .cap{font-size:.8rem;color:var(--muted);text-align:center;margin-top:6px}
+
+/* dialectic */
+.poles{display:grid;grid-template-columns:1fr 60px 1fr;align-items:stretch;margin:22px 0 12px}
+.pole{border-radius:var(--r);padding:20px;text-align:center}
+.pole.acc{background:var(--teal-pale);border:2px solid var(--teal)}
+.pole.chg{background:var(--amber-pale);border:2px solid var(--amber)}
+.pole h4{font-family:'Noto Serif JP',serif;font-size:1.05rem}
+.pole.acc h4{color:var(--teal)} .pole.chg h4{color:var(--amber-2)}
+.pole p{font-size:.88rem;margin:0}
+.pole-mid{display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.synth{background:var(--navy);color:#E6EDF1;border-radius:var(--r);padding:20px 22px;text-align:center}
+.synth .and{display:inline-block;background:var(--amber);color:#fff;font-weight:700;border-radius:5px;padding:0 9px;margin:0 4px;font-size:.85rem}
+.synth p{margin:.3em 0;color:#E6EDF1}
+.synth strong{color:#fff}
+
+/* tabs (dilemmas) */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.tabs button{background:var(--white);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font:600 .84rem 'Noto Sans JP';color:var(--navy);cursor:pointer}
+.tabs button.active{background:var(--teal);border-color:var(--teal);color:#fff}
+.tabpanel{display:none;margin-top:14px}
+.tabpanel.active{display:block}
+.dilemma{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dilemma .side{border-radius:10px;padding:14px 16px;background:var(--cream);border:1px solid var(--line)}
+.dilemma .side h4{font-size:.95rem}
+.dilemma .side p{font-size:.88rem;margin:0}
+.workex{margin-top:12px;background:var(--amber-pale);border-radius:10px;padding:12px 16px;font-size:.88rem}
+.workex b{color:var(--amber-2)}
+
+/* functions/modes */
+.fm{display:grid;grid-template-columns:1fr 34px 1fr;gap:8px 6px;align-items:center;margin:16px 0}
+.fm .f,.fm .m{border-radius:10px;padding:10px 14px;font-size:.88rem}
+.fm .f{background:var(--teal-pale);border:1px solid #BCD8D4}
+.fm .m{background:var(--amber-pale);border:1px solid #E6CFAF}
+.fm .f b,.fm .m b{display:block;font-size:.92rem;color:var(--navy)}
+.fm .arr{text-align:center;color:var(--muted)}
+.fm .head{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--muted);text-align:center}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:6px;margin:16px 0}
+.pyramid div{color:#fff;text-align:center;border-radius:8px;padding:10px 12px;font-size:.88rem;font-weight:500}
+.pyramid div small{display:block;font-weight:400;opacity:.92;font-size:.78rem}
+.pyramid .p1{background:var(--rust);width:46%}
+.pyramid .p2{background:var(--amber-2);width:62%}
+.pyramid .p3{background:var(--teal);width:80%}
+.pyramid .p4{background:var(--navy-2);width:98%}
+.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}
+.stage{background:var(--white);border:1px solid var(--line);border-top:4px solid var(--teal);border-radius:8px;padding:10px;font-size:.8rem}
+.stage b{display:block;font-size:.84rem;color:var(--navy);margin-bottom:3px}
+.levels3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.levels3 .card{padding:16px}
+.levels3 .card h4{font-size:.92rem}
+.levels3 .card p{font-size:.84rem;margin:0}
+
+/* validation levels */
+.vscene{background:var(--navy);color:#E6EDF1;border-radius:var(--r);padding:16px 20px;margin:14px 0}
+.vscene b{color:#E9C38F}
+.vlevels{display:flex;flex-direction:column;gap:8px}
+.vlevel{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:.2s}
+.vlevel:hover{border-color:var(--teal)}
+.vlevel .num{width:32px;height:32px;border-radius:50%;background:var(--teal-pale);color:var(--teal);font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s}
+.vlevel .t{font-weight:700;font-size:.94rem}
+.vlevel .d{font-size:.84rem;color:var(--muted)}
+.vlevel .ex{display:none;margin-top:8px;font-size:.88rem;background:var(--teal-pale);border-radius:8px;padding:10px 12px}
+.vlevel.open{border-color:var(--teal);box-shadow:var(--shadow)}
+.vlevel.open .num{background:var(--teal);color:#fff}
+.vlevel.open .ex{display:block}
+.invalid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.invalid div{background:var(--rust-pale);border-radius:8px;padding:10px 12px;font-size:.86rem}
+.invalid div b{color:var(--rust)}
+
+/* chain stepper */
+.chain-track{display:flex;gap:4px;margin:14px 0 10px;flex-wrap:wrap}
+.chain-track button{flex:1;min-width:70px;border:1px solid var(--line);background:var(--white);border-radius:8px;padding:8px 4px;font:600 .74rem 'Noto Sans JP';color:var(--navy);cursor:pointer;line-height:1.35}
+.chain-track button span{display:block;font-size:.68rem;color:var(--muted);font-weight:500}
+.chain-track button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chain-track button.active span{color:#E9C38F}
+.chain-track button.done{background:var(--teal-pale);border-color:#BCD8D4}
+.chain-panel{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;min-height:170px}
+.chain-panel h4{font-size:1.02rem;margin-bottom:.5rem}
+.chain-panel p{font-size:.92rem}
+.chain-nav{display:flex;justify-content:space-between;margin-top:10px}
+.chain-nav button{background:var(--teal);color:#fff;border:0;border-radius:8px;padding:8px 16px;font:600 .84rem 'Noto Sans JP';cursor:pointer}
+.chain-nav button:disabled{background:var(--line);color:var(--muted);cursor:default}
+.links{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0}
+.links span.l{background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:4px 9px;font-size:.82rem}
+.links span.a{color:var(--muted)}
+
+/* skills */
+.skillmap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.skillmap .side{border-radius:var(--r);padding:14px;text-align:center}
+.skillmap .side.acc{background:var(--teal-pale);border:1.5px solid var(--teal)}
+.skillmap .side.chg{background:var(--amber-pale);border:1.5px solid var(--amber)}
+.skillmap .lbl{font-size:.75rem;font-weight:700;letter-spacing:.1em}
+.skillmap .acc .lbl{color:var(--teal)} .skillmap .chg .lbl{color:var(--amber-2)}
+.skillmap .mods{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.skillmap .mods span{background:var(--white);border-radius:8px;padding:6px 12px;font-size:.86rem;font-weight:700}
+.acc-item{background:var(--white);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.acc-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;user-select:none}
+.acc-head:hover{background:#FBF8F2}
+.acc-head .n{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0}
+.acc-head .ttl{flex:1}
+.acc-head .ttl b{display:block;font-size:1rem;color:var(--navy)}
+.acc-head .ttl span{font-size:.8rem;color:var(--muted)}
+.acc-head .chev{transition:.25s;color:var(--muted)}
+.acc-item.open .acc-head .chev{transform:rotate(180deg)}
+.acc-body{display:none;padding:4px 20px 20px;border-top:1px solid var(--line)}
+.acc-item.open .acc-body{display:block}
+.acc-body h4{margin-top:16px;padding-bottom:4px;border-bottom:2px solid var(--cream-2)}
+.sk{display:grid;grid-template-columns:150px 1fr;gap:4px 14px;font-size:.89rem;padding:8px 0;border-bottom:1px dashed var(--line)}
+.sk:last-child{border-bottom:0}
+.sk dt{font-weight:700;color:var(--navy)}
+.sk dt small{display:block;font-weight:400;color:var(--muted);font-size:.74rem}
+.sk dd{margin:0}
+.flowrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0;font-size:.83rem}
+.flowrow span.s{background:var(--cream);border:1px solid var(--line);border-radius:6px;padding:4px 10px}
+.flowrow span.ar{color:var(--muted)}
+
+/* evidence */
+.ev{display:flex;flex-direction:column;gap:12px}
+.ev .card{padding:16px 18px}
+.ev .card h4{display:flex;flex-wrap:wrap;align-items:center;gap:4px;font-size:.98rem}
+.ev .card p{font-size:.88rem;margin:.3em 0 0}
+.ev .card .src{font-size:.78rem;color:var(--muted);margin-top:6px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.82rem;margin:8px 0 16px}
+
+/* role table */
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.role{border-radius:var(--r);padding:16px;font-size:.88rem}
+.role h4{display:flex;align-items:center;gap:6px;font-size:.95rem;margin-bottom:8px}
+.role.ok{background:var(--teal-pale);border:1px solid #BCD8D4} .role.ok h4{color:var(--teal)}
+.role.cond{background:var(--amber-pale);border:1px solid #E6CFAF} .role.cond h4{color:var(--amber-2)}
+.role.ref{background:var(--rust-pale);border:1px solid #E7C3BB} .role.ref h4{color:var(--rust)}
+.role ul{margin-left:1.1em}
+.role li{margin-bottom:5px}
+.phrase{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 18px}
+.phrase div{border-radius:8px;padding:10px 13px;font-size:.87rem}
+.phrase .va{background:var(--teal-pale)} .phrase .ch{background:var(--amber-pale)}
+.phrase .lab{font-size:.7rem;font-weight:700;letter-spacing:.08em;display:block;margin-bottom:2px}
+.phrase .va .lab{color:var(--teal)} .phrase .ch .lab{color:var(--amber-2)}
+.phrase-scene{font-size:.84rem;color:var(--muted);margin-top:16px;font-weight:700}
+
+/* critique */
+.crit{border-left:4px solid var(--rust);background:var(--white);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
+.crit h4{color:var(--rust)}
+.crit p{font-size:.9rem;margin:0}
+
+/* refs */
+ol.refs{margin-left:1.3em;font-size:.86rem}
+ol.refs li{margin-bottom:10px;padding-left:4px}
+ol.refs a{word-break:break-all}
+.refgroup{font-weight:700;color:var(--teal);margin:20px 0 8px;font-size:.92rem}
+.terms dt{font-weight:700;color:var(--navy);margin-top:12px}
+.terms dd{margin:2px 0 0;font-size:.9rem}
+
+footer{background:var(--navy);color:#C9D4DB;text-align:center;padding:34px 20px;font-size:.88rem}
+footer strong{color:#fff}
+
+@media (max-width:760px){
+  body{font-size:15px}
+  .hero h1{font-size:1.6rem}
+  h2{font-size:1.35rem}
+  .grid2,.grid3,.roles,.levels3,.invalid,.phrase,.dilemma,.skillmap{grid-template-columns:1fr}
+  .poles{grid-template-columns:1fr}
+  .pole-mid{padding:6px 0;transform:rotate(90deg)}
+  .stages{grid-template-columns:1fr 1fr}
+  .fm{grid-template-columns:1fr 24px 1fr}
+  .fm .f,.fm .m{font-size:.8rem;padding:8px 10px}
+  .sk{grid-template-columns:1fr}
+  .pyramid .p1,.pyramid .p2,.pyramid .p3,.pyramid .p4{width:100%}
+  .hero svg.poles{display:none}
+  section{padding:48px 0}
+}
+@media print{nav.toc,#progress{display:none}.fade{opacity:1;transform:none}.acc-body,.tabpanel,.vlevel .ex{display:block!important}}
+</style>
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19L12 3z"/><path d="M12 10v4.5M12 17.5v.01"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6l-8-3z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 9h15l-4-4M20 15H5l4 4"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 12c2.5-4 5-4 7.5 0s5 4 7.5 0 3.5-3 5-1.5"/><path d="M2 17c2.5-3 5-3 7.5 0s5 3 7.5 0"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17.5" cy="9" r="2.6"/><path d="M17 14.6c2.4.2 4 1.8 4.5 4.6"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5v2M3 12.5h18"/></symbol>
+  <symbol id="i-ear" viewBox="0 0 24 24"><path d="M7 9a5 5 0 0 1 10 0c0 3-2.5 4-3.3 5.8-.6 1.5-.7 3.7-2.9 4.2-1.6.3-2.8-.6-3.3-1.7"/><path d="M10 9.5a2 2 0 0 1 4 0c0 1.2-1 1.6-1.5 2.3"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5v-15z"/><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.5 9.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7.5 15h9"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12c0-4 3-6.5 7-6.5 0 4-3 6.5-7 6.5zM12 14c0-3.2-2.4-5.2-5.6-5.2 0 3.2 2.4 5.2 5.6 5.2z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2z"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><circle cx="5" cy="11" r="2.3"/><circle cx="19" cy="11" r="2.3"/><path d="M7 20c.6-3.4 2.6-5 5-5s4.4 1.6 5 5M1.5 19c.3-2 1.5-3.4 3.5-3.6M22.5 19c-.3-2-1.5-3.4-3.5-3.6"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14"/><path d="m5 7-3 6a3 3 0 0 0 6 0L5 7zM19 7l-3 6a3 3 0 0 0 6 0l-3-6z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></symbol>
+</svg>
+
+<div id="progress"></div>
+
+<header class="hero">
+  <svg class="poles" viewBox="0 0 400 300" aria-hidden="true">
+    <circle cx="120" cy="150" r="100" fill="none" stroke="#2A8A80" stroke-width="3"/>
+    <circle cx="280" cy="150" r="100" fill="none" stroke="#B97D33" stroke-width="3"/>
+    <path d="M60 150 Q200 40 340 150" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="6 8"/>
+  </svg>
+  <div class="wrap">
+    <span class="eyebrow">スタッフ教育資料 ｜ 就労移行支援</span>
+    <h1>弁証法的行動療法（DBT）<br>実践リファレンス</h1>
+    <div class="en">Dialectical Behavior Therapy — 受け入れることと、変わること</div>
+    <p class="hero-lead">「今のあなたの苦しさには理由がある」と<strong>受け入れ</strong>ながら、「それでも、生きるに値する人生に向けて一緒に変えていこう」と<strong>変化</strong>に働きかける。DBTは、この一見矛盾する二つを同時に持ち続けることを中核に据えた、認知行動療法の一つです。</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="目次">
+  <div class="toc-inner" id="tocInner">
+    <button data-target="s-why">なぜ知るか</button>
+    <button data-target="s-history">誕生と歴史</button>
+    <button data-target="s-biosocial">バイオソーシャル理論</button>
+    <button data-target="s-dialectic">弁証法</button>
+    <button data-target="s-structure">治療の構造</button>
+    <button data-target="s-validation">承認の6レベル</button>
+    <button data-target="s-chain">チェーン分析</button>
+    <button data-target="s-skills">4つのスキル</button>
+    <button data-target="s-evidence">エビデンス</button>
+    <button data-target="s-practice">現場での活かし方</button>
+    <button data-target="s-critique">批判的考察</button>
+    <button data-target="s-terms">用語メモ</button>
+    <button data-target="s-refs">文献</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- 1. WHY -->
+<section id="s-why">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-compass"/></svg>01 ｜ 出発点</span>
+  <h2>なぜ就労支援スタッフがDBTを知るのか</h2>
+  <div class="rule"></div>
+  <p>DBTは、もともと自殺や自傷のリスクが慢性的に高い人、とくにボーダーラインパーソナリティ症（BPD／旧称：境界性パーソナリティ障害）の人のために開発された治療です。就労移行支援の現場で「治療」としてDBTを行うことはありません。それでも知っておく価値があるのは、DBTが<strong>強い感情の波と、それにまつわる行動を、本人の性格のせいにせずに理解し、関わるための言葉と枠組み</strong>を体系的に整えているからです。</p>
+  <div class="grid3">
+    <div class="card why-card">
+      <div class="ico"><svg class="icon"><use href="#i-wave"/></svg></div>
+      <h4>感情の波が「働き続ける」を左右する</h4>
+      <p class="small mb0">注意・評価・人間関係の摩擦で生じる強い感情への対処は、業務スキルと並んで、実習や就労の継続に関わる要因になりえます。</p>
+    </div>
+    <div class="card why-card">
+      <div class="ico"><svg class="icon"><use href="#i-ear"/></svg></div>
+      <h4>関わり方そのものを体系化している</h4>
+      <p class="small mb0">「受け止める」と「変化を促す」をどう組み合わせるか。DBTは承認（バリデーション）を段階的な技法として言語化しています。</p>
+    </div>
+    <div class="card why-card">
+      <div class="ico"><svg class="icon"><use href="#i-link"/></svg></div>
+      <h4>治療とつながる共通言語</h4>
+      <p class="small mb0">利用者が医療機関でDBTやスキル訓練を受けている場合、スキルの名前を知っていると、日常場面での練習を支える会話ができます。</p>
+    </div>
+  </div>
+  <div class="callout c-teal">
+    <svg class="icon"><use href="#i-sprout"/></svg>
+    <div><p><strong>DBTの目標は「生きるに値する人生（a life worth living）」をつくること。</strong>症状を消すことそのものではなく、本人が「これなら生きていたい」と思える生活を築くことが最終目標とされます。働くことは、その中心的な要素になりえます。実際、就労と自立を明示的な目標に掲げた発展版（DBT-ACES）も開発されています（09で紹介）。</p></div>
+  </div>
+  <div class="callout c-rust">
+    <svg class="icon"><use href="#i-shield"/></svg>
+    <div><p><strong>本資料の位置づけ：</strong>DBTを理解し、支援の姿勢に活かすための教育資料です。治療の実施マニュアルではありません。自傷・自殺念慮などへの対応は事業所の危機対応手順と主治医・専門職との連携が前提です（10で整理）。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 2. HISTORY -->
+<section id="s-history" class="alt">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-clock"/></svg>02 ｜ 誕生と歴史</span>
+  <h2>「変われ」だけでは届かなかった</h2>
+  <div class="rule"></div>
+  <p>開発者のマーシャ・リネハン（Marsha M. Linehan, 1943–2026）は、自殺のリスクが慢性的に高い人に標準的な行動療法を適用しようとしました。ところが、変化を求める働きかけは、本人には「今のあなたは間違っている」という否定として受け取られやすく、怒りや治療からの脱落につながりました。かといって受容だけに寄ると、今度は「この苦しさを本気で変えようとしてくれない」と感じられる。この行き詰まりから、<strong>受容の技法を禅の実践から取り入れ、受容と変化を「弁証法」でつなぐ</strong>という発想が生まれたとされます。</p>
+  <div class="timeline">
+    <div class="tl"><div class="yr">1970年代後半〜1980年代</div><p>行動療法を慢性的な自殺リスクのある女性に適用する研究の中で、受容（マインドフルネス、禅の実践に由来）と変化（行動療法）を統合するモデルを構築。</p></div>
+    <div class="tl"><div class="yr">1991年</div><p>最初の無作為化比較試験（RCT）を発表。通常治療と比べ、自殺企図などの行動や入院日数、治療からの脱落が少なかったと報告（Linehan et al., 1991）。</p></div>
+    <div class="tl"><div class="yr">1993年</div><p>BPDの認知行動療法としての治療マニュアルと、スキル訓練マニュアルを刊行し、世界に普及。</p></div>
+    <div class="tl"><div class="yr">2011年</div><p>リネハン自身が、10代に精神科病院で長期の入院治療を受けていたことを公表（The New York Times）。開発者自身の経験がDBTの背景にあることが知られるようになる。</p></div>
+    <div class="tl"><div class="yr">2014年</div><p>スキル訓練マニュアル第2版を刊行。STOP、ABC PLEASE、中道を歩むなどのスキルが加わり、診断を限定しない活用を意識した構成に。</p></div>
+    <div class="tl"><div class="yr">2015年</div><p>DBTの構成要素を分解して比較したRCTを発表（Linehan et al., 2015）。スキル訓練を含む条件が一部の指標で優位とされた（09参照）。</p></div>
+    <div class="tl"><div class="yr">2025年</div><p>スキル訓練マニュアルの改訂版を刊行。スキル自体は第2版を維持しつつ、言葉づかいや技術・生活の変化に合わせて例を更新。</p></div>
+    <div class="tl"><div class="yr">2026年11月10日</div><p>リネハンが83歳で逝去。自らの苦しみの経験を出発点に、「生きるに値する人生をつくる」ための治療を半世紀近くかけて築き上げた生涯だった。</p></div>
+    <div class="tl jp"><div class="yr">日本：2025〜2026年</div><p>ワークブック『弁証法的行動療法 実践トレーニングブック 増補改訂第2版』（マッケイら著、遊佐安一郎訳、星和書店）刊行。2026年11月には米国の研修機関の講師を招いた公開セミナーも開催され、日本での普及に向けた動きが続いている。一方で、日本語文献の少なさ、研修へのアクセス、包括的な治療構造を支える人手の不足などが普及の壁として指摘されている。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 3. BIOSOCIAL -->
+<section id="s-biosocial">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-swap"/></svg>03 ｜ 人間理解の枠組み</span>
+  <h2>バイオソーシャル理論 <span class="badge b-mid">確度：中</span></h2>
+  <div class="rule"></div>
+  <p>DBTは、感情の調節が難しい状態を「本人の意志の弱さ」や「性格の悪さ」としてではなく、<strong>生まれ持った感情の敏感さと、それを受け止めにくい環境とが、長い時間をかけて互いに影響し合った結果</strong>として理解します（Linehan, 1993; Crowell, Beauchaine & Linehan, 2009）。ポイントは「足し算」ではなく<strong>「やりとりの繰り返し（トランザクション）」</strong>だという点です。</p>
+
+  <div class="diagram">
+    <svg viewBox="0 0 760 400" role="img" aria-label="バイオソーシャル理論のトランザクション図">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#5B6773"/></marker>
+      </defs>
+      <rect x="20" y="20" width="300" height="150" rx="14" fill="#E3F0EE" stroke="#1E6E66" stroke-width="2"/>
+      <text x="170" y="52" text-anchor="middle" font-size="17" font-weight="700" fill="#1E6E66">感情の脆弱性（生物学的要因）</text>
+      <text x="40" y="84" font-size="14" fill="#1B2A38">・感受性が高い：小さな刺激に反応する</text>
+      <text x="40" y="110" font-size="14" fill="#1B2A38">・反応性が高い：反応が強く、速い</text>
+      <text x="40" y="136" font-size="14" fill="#1B2A38">・回復が遅い：落ち着くまで時間がかかる</text>
+      <rect x="440" y="20" width="300" height="150" rx="14" fill="#F6EADA" stroke="#B97D33" stroke-width="2"/>
+      <text x="590" y="52" text-anchor="middle" font-size="17" font-weight="700" fill="#9A6526">無効化する環境（社会的要因）</text>
+      <text x="460" y="84" font-size="14" fill="#1B2A38">・感情や体験を否定・軽視する</text>
+      <text x="460" y="110" font-size="14" fill="#1B2A38">・問題の大きさを過小評価する</text>
+      <text x="460" y="136" font-size="14" fill="#1B2A38">・激しい表出にだけ反応する</text>
+      <path d="M325 70 C 380 40, 390 40, 435 70" fill="none" stroke="#5B6773" stroke-width="2" marker-end="url(#ah)"/>
+      <path d="M435 120 C 390 150, 380 150, 325 120" fill="none" stroke="#5B6773" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="380" y="34" text-anchor="middle" font-size="12.5" fill="#5B6773">強い反応が</text>
+      <text x="380" y="98" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1B2A38">繰り返す</text>
+      <text x="380" y="170" text-anchor="middle" font-size="12.5" fill="#5B6773">否定がさらに強める</text>
+      <path d="M380 185 L380 240" stroke="#5B6773" stroke-width="2" marker-end="url(#ah)"/>
+      <rect x="170" y="248" width="420" height="70" rx="14" fill="#1B2A38"/>
+      <text x="380" y="278" text-anchor="middle" font-size="17" font-weight="700" fill="#FFFFFF">感情調節の困難（全般的な調節不全）</text>
+      <text x="380" y="302" text-anchor="middle" font-size="13" fill="#E9C38F">感情・行動・対人関係・自己感覚・思考に波及しうる</text>
+      <path d="M380 322 L380 352" stroke="#5B6773" stroke-width="2" marker-end="url(#ah)"/>
+      <text x="380" y="378" text-anchor="middle" font-size="13.5" fill="#1B2A38">耐えがたい感情から逃れるための行動（回避・衝動的な言動・関係の断絶など）が「問題」として表れる</text>
+    </svg>
+    <div class="cap">感情の敏感さと環境の応答が互いを強め合う循環（Crowell et al., 2009 をもとに作成）</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h4>「無効化する環境」は「悪い親」の意味ではない</h4>
+      <p class="small mb0">感情の敏感な子どもと、そうでない養育者の組み合わせ（相性のずれ）でも起こりうるとされます。また、学校や職場も無効化する環境になりえます。「気にしすぎ」「みんな我慢している」という反応が続く職場は、その一例です。</p>
+    </div>
+    <div class="card">
+      <h4>激しい表出だけが「届く」という学習</h4>
+      <p class="small mb0">穏やかな訴えは軽視され、感情が爆発したときだけ周囲が動く。この経験が繰り返されると、強い表出が（意図せず）強化されると説明されます。支援の場でも同じ循環が起こりうる点は、支援者側の振り返りに役立ちます。</p>
+    </div>
+  </div>
+  <div class="callout c-amber">
+    <svg class="icon"><use href="#i-info"/></svg>
+    <div><p><strong>確度を「中」としている理由：</strong>臨床の理解の枠組みとしての整合性は広く支持されていますが、理論全体を前向きに直接検証した研究は限られます。発達研究による精緻化（Crowell et al., 2009）は進んでいるものの、一人の利用者の生育歴をこの理論で「説明しきる」ことには慎重であるべきです。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 4. DIALECTIC -->
+<section id="s-dialectic" class="alt">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-scale"/></svg>04 ｜ 哲学的な土台</span>
+  <h2>「弁証法」：両方とも本当、から始める</h2>
+  <div class="rule"></div>
+  <p>弁証法とは、対立して見える二つの立場の<strong>どちらか一方を正解にするのではなく、両方に含まれる真実を取り込んだ「統合」を探し続ける</strong>考え方です。DBTでは、現実は互いにつながり合い、絶えず変化しているという世界観と、治療者と本人の対話の進め方の両方を指します。中心にあるのが「受容」と「変化」の対です。</p>
+
+  <div class="poles">
+    <div class="pole acc">
+      <svg class="icon" style="width:28px;height:28px;color:var(--teal)"><use href="#i-heart"/></svg>
+      <h4>受容・承認</h4>
+      <p>今の感情・思考・行動には、それが生じるだけの理由がある。現実をありのままに認める。</p>
+    </div>
+    <div class="pole-mid"><svg class="icon" style="width:30px;height:30px"><use href="#i-swap"/></svg></div>
+    <div class="pole chg">
+      <svg class="icon" style="width:28px;height:28px;color:var(--amber-2)"><use href="#i-sprout"/></svg>
+      <h4>変化・問題解決</h4>
+      <p>今のやり方は、本人の目標に照らして機能していない部分がある。新しいスキルを学び、行動を変える。</p>
+    </div>
+  </div>
+  <div class="synth">
+    <p><strong>統合 ——「でも」ではなく「そして」</strong></p>
+    <p>「あなたはできる限りのことをしてきた<span class="and">そして</span>もっと上手くやれるようになる必要がある」</p>
+    <p>「不安になるのはもっともだ<span class="and">そして</span>不安のまま休むと、月曜はもっと行きにくくなる」</p>
+  </div>
+
+  <h3>受け入れることと変わることは、矛盾しない <span class="badge b-mid">確度：中</span></h3>
+  <p>「受け入れたら、変わる必要がなくなるのでは？」「変わろうとするのは、今の自分を否定することでは？」と感じる人は少なくありません。けれども、二つは<strong>論理的には矛盾しません</strong>。受け入れる対象と、変える対象とが異なるからです。</p>
+  <div class="grid2">
+    <div class="card"><h4>受け入れるのは「今、ここにある事実」</h4><p class="small mb0">今の感情、これまでの経緯、すぐには変えられない状況。受け入れることは、賛成することでも諦めることでもなく、「そうなっている」と認めることです。</p></div>
+    <div class="card"><h4>変えるのは「これからの行動」</h4><p class="small mb0">事実を認めたうえで、次にどう動くかを選び直すこと。現実を否定したままでは、何をどう変えればよいかも正確に見えません。</p></div>
+  </div>
+  <p style="margin-top:16px">むしろ、<strong>受け入れることは変わるための足場になる</strong>と考えられています。来談者中心療法のカール・ロジャーズは、ありのままの自分を受け入れたときにこそ人は変わることができる、という逆説を述べました。DBTでも、承認によって感情の高ぶりが和らぐと、問題解決に取り組む余地が生まれるとされます。実験研究でも、無効化（否定）された人のほうが否定的な感情反応が強まることが示されています（06参照）。逆に、現実と戦い続けることに力を使い果たしていると、変化に向ける力が残りません。</p>
+  <div class="callout c-amber">
+    <svg class="icon"><use href="#i-info"/></svg>
+    <div><p><strong>ただし「緊張関係」はなくならない：</strong>DBTは、受容と変化を「矛盾しない」と片づけるのではなく、<strong>その場その場で釣り合いを取り続ける必要がある対</strong>として扱います。受容に偏ると「本気で変えようとしてくれない」と感じられ、変化に偏ると「今の自分を否定された」と感じられる。リネハンがDBTを生んだのは、まさにこのどちらにも失敗した経験からでした。また、受け入れれば自然に変わる、という保証もありません。<strong>論理的には両立し、実践では両方を意識してバランスを取り続ける</strong>というのが正確な理解です。確度を「中」としているのは、この考え方を支える根拠が、臨床理論と感情反応に関する実験研究が中心で、「受容が変化を生む」ことを直接検証した研究は限られるためです。</p></div>
+  </div>
+
+  <h3>弁証法的ジレンマ：両極を揺れ動くパターン</h3>
+  <p>リネハンは、感情調節が難しい人が陥りやすい3組の「両極」を示しました。どちらか一方に固定されるのではなく、<strong>両極の間を行き来しやすい</strong>ことが特徴とされます。支援者の役割は、極を責めることではなく、その間の統合点を一緒に探すことです。</p>
+  <div class="tabs" id="dilemmaTabs">
+    <button class="active" data-tab="d1">感情的脆弱性 ↔ 自己無効化</button>
+    <button data-tab="d2">能動的受動性 ↔ 見かけの有能さ</button>
+    <button data-tab="d3">絶え間ない危機 ↔ 抑制された悲嘆</button>
+  </div>
+  <div class="tabpanel active" id="d1">
+    <div class="dilemma">
+      <div class="side"><h4>感情的脆弱性</h4><p>感情に圧倒され、「自分ではどうにもできない」と感じる。周囲に助けや変化を強く求める。</p></div>
+      <div class="side"><h4>自己無効化</h4><p>無効化する環境の見方を自分に向ける。「こんなことで動揺する自分はだめだ」と感情を否定し、非現実的に高い基準を課す。</p></div>
+    </div>
+    <div class="workex"><b>就労場面では：</b>面接練習で動揺して泣いてしまい、直後に「こんな弱い人間が働けるわけがない」と自分を責める。統合点は「動揺するほど大事な場面だった。そして、動揺しながらでも練習は続けられる」。</div>
+  </div>
+  <div class="tabpanel" id="d2">
+    <div class="dilemma">
+      <div class="side"><h4>能動的受動性</h4><p>問題に直面すると、自分で解決するよりも、周囲が解決してくれることを強く求める（無力感の表れ）。</p></div>
+      <div class="side"><h4>見かけの有能さ</h4><p>場面によっては有能に見えるため、実際の困難が周囲に伝わらない。表情や言葉と、内側の苦しさが一致しない。</p></div>
+    </div>
+    <div class="workex"><b>就労場面では：</b>実習中は落ち着いて業務をこなしているように見え、スタッフも「順調」と判断していたのに、ある日突然の欠勤が続く。「できているように見える」ことが支援を遠ざける。統合点は、見た目の評価に頼らず、本人の自己評価と負荷を定期的に確認する仕組みをつくること。</div>
+  </div>
+  <div class="tabpanel" id="d3">
+    <div class="dilemma">
+      <div class="side"><h4>絶え間ない危機</h4><p>一つの危機が収まる前に次が起き、生活が危機の連続になる。危機への対処に追われ、長期的な取り組みが進まない。</p></div>
+      <div class="side"><h4>抑制された悲嘆</h4><p>喪失や痛みを伴う感情を避け、十分に体験しない。避けられた感情が、次の危機の土台になる。</p></div>
+    </div>
+    <div class="workex"><b>就労場面では：</b>毎週のように家族・金銭・体調のトラブルが起き、面談がその対応で埋まる。一方で、前職を失ったことへの悲しみには触れようとしない。統合点は、危機対応の時間と、目標に向けた取り組みの時間を分けて確保すること。喪失感への対応は主治医・専門職と連携。</div>
+  </div>
+
+  <h3>二つのコミュニケーションスタイル</h3>
+  <div class="grid2">
+    <div class="card"><h4>相互的（Reciprocal）</h4><p class="small mb0">温かさ、応答性、本人の話への真剣な関心、適度な自己開示。関係の土台をつくる、受容寄りのスタイル。</p></div>
+    <div class="card"><h4>型破り（Irreverent）</h4><p class="small mb0">予想外の率直さや軽いユーモアで、膠着したやりとりの流れを変える、変化寄りのスタイル。訓練を受けた治療者が関係性の土台の上で使うもので、支援現場で安易に真似ると「軽く扱われた」と受け取られる危険があります。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 5. STRUCTURE -->
+<section id="s-structure">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-layers"/></svg>05 ｜ 治療の構造</span>
+  <h2>5つの機能を、複数の様式で満たす</h2>
+  <div class="rule"></div>
+  <p>標準的な（包括的な）DBTは、単一のセッションではなく、<strong>治療が果たすべき5つの「機能」</strong>を、複数の<strong>「様式（モード）」</strong>で分担する設計になっています。「何のためにその様式があるのか」という機能の側から見ると、現場でどこを参考にできるかが見えやすくなります。</p>
+  <div class="fm">
+    <div class="head">機能（何のために）</div><div></div><div class="head">主に担う様式（どうやって）</div>
+    <div class="f"><b>① 能力を高める</b>新しいスキルを身につける</div><div class="arr"><svg class="icon"><use href="#i-arrow-r"/></svg></div><div class="m"><b>スキル訓練グループ</b>週1回・授業形式で4モジュールを学ぶ</div>
+    <div class="f"><b>② 動機づけを高める</b>スキルを使う意欲を支え、妨げを減らす</div><div class="arr"><svg class="icon"><use href="#i-arrow-r"/></svg></div><div class="m"><b>個人療法</b>日誌カードとチェーン分析で行動を検討</div>
+    <div class="f"><b>③ 日常へ般化する</b>学んだことを実生活で使えるようにする</div><div class="arr"><svg class="icon"><use href="#i-arrow-r"/></svg></div><div class="m"><b>セッション間のコーチング</b>電話などで、その場でのスキル使用を支援</div>
+    <div class="f"><b>④ 環境を構造化する</b>変化を支え、問題行動を強化しない環境に整える</div><div class="arr"><svg class="icon"><use href="#i-arrow-r"/></svg></div><div class="m"><b>ケースマネジメント・環境調整</b>家族や関係機関との調整など</div>
+    <div class="f"><b>⑤ 治療者の能力と動機を支える</b>燃え尽きを防ぎ、治療の質を保つ</div><div class="arr"><svg class="icon"><use href="#i-arrow-r"/></svg></div><div class="m"><b>コンサルテーションチーム</b>治療者同士の定期的な相互支援</div>
+  </div>
+  <div class="callout c-teal">
+    <svg class="icon"><use href="#i-brief"/></svg>
+    <div><p><strong>就労移行の支援者が参考にしやすいのは④と⑤の機能です。</strong>実習先への説明や配慮の調整は④、ケース会議で支援者同士が互いを支えることは⑤の考え方に近いものです。一方、①〜③を「DBTとして」提供するには専門的な訓練と体制が必要です。</p></div>
+  </div>
+
+  <h3>治療の段階と、第1段階の標的の優先順位</h3>
+  <div class="stages">
+    <div class="stage"><b>前治療</b>目標の共有と、取り組むことへの合意（コミットメント）</div>
+    <div class="stage"><b>第1段階</b>重大な行動の制御：命や治療を脅かす行動から</div>
+    <div class="stage"><b>第2段階</b>「静かな絶望」：外傷体験などの感情的な苦痛に取り組む</div>
+    <div class="stage"><b>第3段階</b>日常の問題を解決し、自尊心を高める</div>
+    <div class="stage"><b>第4段階</b>不全感を超え、喜びやつながりを育てる</div>
+  </div>
+  <p>第1段階では、扱う問題に<strong>明確な優先順位</strong>があります。面談の時間が限られる中で何から扱うかを決める枠組みとして、とても実践的です。</p>
+  <div class="pyramid">
+    <div class="p1">① 生命を脅かす行動<small>自殺関連行動・自傷・他害</small></div>
+    <div class="p2">② 治療を妨げる行動<small>欠席・遅刻・約束の不履行など（治療者側の行動も含む）</small></div>
+    <div class="p3">③ 生活の質を妨げる行動<small>就労・住居・物質使用・対人関係の問題など</small></div>
+    <div class="p4">④ 行動スキルの獲得<small>上記に代わる行動を学ぶ</small></div>
+  </div>
+  <div class="callout c-amber">
+    <svg class="icon"><use href="#i-info"/></svg>
+    <div><p><strong>「妨げる行動」には支援者側の行動も含まれる</strong>という点は、DBTの特徴です。予定の変更が多い、返事が遅い、本人の話を途中で遮るなど、支援者の行動が関係を損ねていないかを点検する視点は、そのまま就労支援にも応用できます。</p></div>
+  </div>
+
+  <h3>「DBT」という言葉が指す範囲の違い</h3>
+  <div class="levels3">
+    <div class="card"><h4>包括的（標準）DBT</h4><p>5つの機能をすべて満たす治療。研究の中心はこれ。訓練を受けた治療者チームが必要。</p></div>
+    <div class="card"><h4>DBTスキル訓練単独</h4><p>スキルグループのみを提供する形。研究は増えているが、包括的DBTとは別のエビデンスとして扱う必要がある。</p></div>
+    <div class="card"><h4>DBTを参考にした関わり</h4><p>承認や理論を支援の姿勢に取り入れる形（DBT-informed）。就労移行支援で現実的なのはこの水準。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 6. VALIDATION -->
+<section id="s-validation" class="alt">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-ear"/></svg>06 ｜ スタッフが使える道具 1</span>
+  <h2>承認（バリデーション）の6レベル</h2>
+  <div class="rule"></div>
+  <p>承認とは、<strong>相手の感情・考え・行動のうち「理にかなっている部分」を見つけ、それを伝えること</strong>です。同意や賞賛とは違います。「辞めたい」という気持ちを理解できると伝えることは、「辞めるべきだ」と賛成することではありません。リネハンは承認を6つのレベルに整理しました（Linehan, 1997）。各レベルをタップすると、場面に即した例が表示されます。</p>
+  <div class="vscene"><b>場面：</b>実習2日目の帰り、利用者が事業所に寄って「実習先で注意されました。もう行きたくないです」と話す。</div>
+  <div class="vlevels" id="vlevels">
+    <div class="vlevel"><div class="num">1</div><div><div class="t">注意を向けて聴く</div><div class="d">手を止め、相手に関心を向け、最後まで聴く</div><div class="ex">パソコンから手を離して体を向け、うなずきながら聴く。途中で「でも」と遮らず、助言を急がない。言葉よりも先に「あなたの話を大事に聴いている」ことが伝わる段階です。</div></div></div>
+    <div class="vlevel"><div class="num">2</div><div><div class="t">正確に映し返す</div><div class="d">聴いた内容を、評価を加えずに言い返す</div><div class="ex">「実習先で注意を受けて、もう行きたくないと感じているんですね」。理解がずれていれば本人が訂正できるため、確認の役割も果たします。</div></div></div>
+    <div class="vlevel"><div class="num">3</div><div><div class="t">言葉にされていないものを言語化する</div><div class="d">表情や文脈から、まだ語られていない感情や考えを推し量って伝える</div><div class="ex">「注意されたこと自体よりも、『できない人だと思われた』と感じたことがつらかったのかもしれない、と思ったのですが、どうですか」。決めつけず、確かめる形で伝えます。</div></div></div>
+    <div class="vlevel"><div class="num">4</div><div><div class="t">過去の経験や体質から理解できると伝える</div><div class="d">これまでの学習歴や生物学的な要因から見て、その反応が理解できることを伝える</div><div class="ex">「前の職場で叱責が続いた経験を考えると、注意に強く反応するのは自然なことだと思います」。今の状況に照らすと過剰に見える反応でも、本人の歴史の中では筋が通ることを伝えます。</div></div></div>
+    <div class="vlevel"><div class="num">5</div><div><div class="t">今の状況から見て妥当だと伝える</div><div class="d">多くの人が同じ状況で同じように感じる、と現在の文脈で正常化する</div><div class="ex">「慣れない場所で、人前で注意されたら、誰でも行きたくなくなるくらい動揺すると思います」。リネハンは、使えるときにはレベル4よりもレベル5を優先するよう勧めています。反応が「今の状況に見合っている」と伝えるほうが、「あなたの過去のせい」と伝えるよりも本人の力を損ねにくいためです。</div></div></div>
+    <div class="vlevel"><div class="num">6</div><div><div class="t">対等な一人の人として本気で関わる</div><div class="d">壊れやすい人として扱わず、本人の力を信じて率直に向き合う（徹底的な誠実さ）</div><div class="ex">「動揺していても、こうして今日のうちに話しに来てくれたことに力を感じます。次の実習日までにどうするか、一緒に決めませんか」。腫れ物扱いせず、変化の力を持つ人として接すること自体が承認になります。</div></div></div>
+  </div>
+
+  <h3>承認するのは「妥当なもの」だけ</h3>
+  <p>DBTでは「妥当なものを承認する（validate the valid）」とされます。「行きたくない」という気持ちは承認しても、「連絡せずに休む」という行動まで承認するわけではありません。承認で関係の土台を整えたうえで、変化（どうするか）の話に進むのが基本の流れです。</p>
+  <h4 style="margin-top:14px">よくある「無効化」の反応</h4>
+  <div class="invalid">
+    <div><b>軽視：</b>「そのくらいで？」「気にしすぎですよ」</div>
+    <div><b>早すぎる問題解決：</b>話し終わる前に「じゃあこうしましょう」と対策を示す</div>
+    <div><b>比較：</b>「他の人はもっと大変な実習先でも頑張っていますよ」</div>
+    <div><b>無理な前向き化：</b>「良い経験になったと考えましょう」</div>
+  </div>
+  <div class="callout c-amber">
+    <svg class="icon"><use href="#i-info"/></svg>
+    <div><p><strong>根拠について <span class="badge b-mid">確度：中</span></strong> 承認はDBTの中核戦略です。実験研究では、無効化的な応答を受けた参加者は、承認的な応答を受けた参加者に比べて否定的な感情や生理的な反応が強まったと報告されています（Shenk & Fruzzetti, 2011; Greville-Harris et al., 2016）。ただし、多くは臨床群ではない参加者を対象にした実験室研究です。また、6レベルという整理そのものは臨床的な枠組みであり、レベルごとの効果が個別に検証されているわけではありません。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 7. CHAIN -->
+<section id="s-chain">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-link"/></svg>07 ｜ スタッフが使える道具 2</span>
+  <h2>チェーン分析：「なぜ」よりも「何が、どの順で」</h2>
+  <div class="rule"></div>
+  <p>チェーン分析（行動の連鎖分析）は、ある問題行動に至るまでの出来事・思考・感情・身体感覚・行動を、<strong>鎖の輪（リンク）のように一つずつ細かく並べる</strong>方法です。「なぜ休んだの？」と理由を問うよりも、「何がどの順で起きたか」をたどるほうが、責める空気を生まずに、どこで鎖を断ち切れるかを具体的に見つけられます。ここでは、就労移行でよく出会う<strong>「実習の無断欠席」</strong>を例に、ステップを追ってみましょう。</p>
+  <div class="chain-track" id="chainTrack"></div>
+  <div class="chain-panel" id="chainPanel"></div>
+  <div class="chain-nav"><button id="chainPrev" type="button">前へ</button><button id="chainNext" type="button">次へ</button></div>
+  <div class="callout c-rust" style="margin-top:22px">
+    <svg class="icon"><use href="#i-shield"/></svg>
+    <div><p><strong>使う範囲の線引き：</strong>標準DBTでは、チェーン分析は個人療法の中で治療者が行う中核技法です。自傷・自殺関連行動のチェーン分析は支援スタッフの役割の範囲外で、主治医・治療者に委ねます。遅刻・欠席・業務上のミスなど「生活の質」に関わる行動であれば、本人の同意のもと、<strong>責めないための振り返りの枠組み</strong>として参考にできます。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 8. SKILLS -->
+<section id="s-skills" class="alt">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-book"/></svg>08 ｜ スキルの全体像</span>
+  <h2>4つのスキルモジュール</h2>
+  <div class="rule"></div>
+  <p>DBTのスキルは4つのモジュールに分かれ、<strong>受容のスキル</strong>と<strong>変化のスキル</strong>に大別されます。マインドフルネスは他のすべてのスキルの土台で、スキル訓練の中で繰り返し扱われます。以下は第2版（2014年）の体系に沿った整理です。</p>
+  <div class="skillmap">
+    <div class="side acc"><div class="lbl">受容のスキル</div><div class="mods"><span>マインドフルネス</span><span>苦悩耐性</span></div></div>
+    <div class="side chg"><div class="lbl">変化のスキル</div><div class="mods"><span>感情調節</span><span>対人関係効果性</span></div></div>
+  </div>
+
+  <!-- Mindfulness -->
+  <div class="acc-item" id="sk1">
+    <div class="acc-head" onclick="toggleOpen('sk1')"><div class="n" style="background:var(--teal)">1</div><div class="ttl"><b>マインドフルネス・スキル</b><span>今この瞬間に、評価を加えずに注意を向ける ｜ 中核スキル</span></div><svg class="icon chev"><use href="#i-chev"/></svg></div>
+    <div class="acc-body">
+      <h4>ワイズマインド（賢い心）</h4>
+      <p class="small">人の心の状態を3つに分けて捉えます。目指すのは、理性と感情のどちらかを捨てることではなく、両方を統合した「賢い心」から選ぶことです。</p>
+      <div class="diagram" style="margin:10px 0">
+        <svg viewBox="0 0 600 260" role="img" aria-label="ワイズマインドの図">
+          <circle cx="230" cy="130" r="110" fill="#1E6E66" fill-opacity=".14" stroke="#1E6E66" stroke-width="2"/>
+          <circle cx="370" cy="130" r="110" fill="#B97D33" fill-opacity=".16" stroke="#B97D33" stroke-width="2"/>
+          <text x="175" y="118" text-anchor="middle" font-size="17" font-weight="700" fill="#1E6E66">理性的な心</text>
+          <text x="175" y="142" text-anchor="middle" font-size="12.5" fill="#1B2A38">論理・計画・事実</text>
+          <text x="175" y="160" text-anchor="middle" font-size="12.5" fill="#1B2A38">感情を考慮しない</text>
+          <text x="425" y="118" text-anchor="middle" font-size="17" font-weight="700" fill="#9A6526">感情的な心</text>
+          <text x="425" y="142" text-anchor="middle" font-size="12.5" fill="#1B2A38">気分が思考と行動を</text>
+          <text x="425" y="160" text-anchor="middle" font-size="12.5" fill="#1B2A38">支配する</text>
+          <text x="300" y="124" text-anchor="middle" font-size="16" font-weight="700" fill="#1B2A38">賢い心</text>
+          <text x="300" y="146" text-anchor="middle" font-size="12" fill="#1B2A38">両方を統合し</text>
+          <text x="300" y="162" text-anchor="middle" font-size="12" fill="#1B2A38">直観的に「分かる」</text>
+        </svg>
+      </div>
+      <h4>「何を」するスキル（What）</h4>
+      <dl>
+        <div class="sk"><dt>観察する<small>Observe</small></dt><dd>感覚・感情・思考に、言葉をつけずにただ気づく。追い払おうとも、しがみつこうともしない。</dd></div>
+        <div class="sk"><dt>描写する<small>Describe</small></dt><dd>観察したことを、解釈を交えず言葉にする。「上司は私を嫌っている」ではなく「上司が眉をひそめた。私は胸が締めつけられた」。</dd></div>
+        <div class="sk"><dt>参加する<small>Participate</small></dt><dd>自意識から離れ、今の活動に没頭する。</dd></div>
+      </dl>
+      <h4>「どのように」するスキル（How）</h4>
+      <dl>
+        <div class="sk"><dt>評価せずに<small>Non-judgmentally</small></dt><dd>良い・悪いの判定を加えず、事実と結果に目を向ける。判定している自分に気づいても、それを責めない。</dd></div>
+        <div class="sk"><dt>一つのことに<small>One-mindfully</small></dt><dd>今していることに注意を向け、それて気づいたら戻す。</dd></div>
+        <div class="sk"><dt>効果的に<small>Effectively</small></dt><dd>「正しいかどうか」よりも「目標に照らして機能するか」で行動を選ぶ。</dd></div>
+      </dl>
+      <div class="workex"><b>就労場面では：</b>メールの返信が遅れた上司に「無視された」と感じたとき。観察（胸がざわつく）→描写（「返信がまだない。私は不安を感じている」）→効果的に（今の業務に戻り、夕方まで返信がなければ確認する）。</div>
+    </div>
+  </div>
+
+  <!-- Distress tolerance -->
+  <div class="acc-item" id="sk2">
+    <div class="acc-head" onclick="toggleOpen('sk2')"><div class="n" style="background:var(--navy-2)">2</div><div class="ttl"><b>苦悩耐性スキル</b><span>危機を悪化させずに乗り切る／変えられない現実を受け入れる</span></div><svg class="icon chev"><use href="#i-chev"/></svg></div>
+    <div class="acc-body">
+      <p class="small" style="margin-top:12px">目的は、苦痛を「解決する」ことではなく、<strong>状況をさらに悪くする行動を取らずに、その瞬間を乗り切る</strong>ことです。問題解決がすぐにはできないときのためのスキル群です。</p>
+      <h4>危機を乗り切るスキル</h4>
+      <dl>
+        <div class="sk"><dt>STOP</dt><dd><b>S</b>top（止まる）、<b>T</b>ake a step back（一歩下がる）、<b>O</b>bserve（観察する）、<b>P</b>roceed mindfully（意識して進む）。衝動のままに動く前の「間」をつくる。</dd></div>
+        <div class="sk"><dt>メリット・デメリット<small>Pros and Cons</small></dt><dd>衝動に従う場合と抵抗する場合の、短期と長期の結果を書き出して比べる。</dd></div>
+        <div class="sk"><dt>TIPP</dt><dd>体の状態から急激な感情の高まりを下げる。<b>T</b>emperature（顔を冷たい水で冷やす）、<b>I</b>ntense exercise（短時間の激しい運動）、<b>P</b>aced breathing（吐く息を長くしたゆっくりの呼吸）、<b>P</b>aired muscle relaxation（息を吐くのに合わせて筋肉を緩める）。</dd></div>
+        <div class="sk"><dt>ACCEPTS</dt><dd>気をそらす7つの方法：<b>A</b>ctivities（活動）、<b>C</b>ontributing（誰かの役に立つ）、<b>C</b>omparisons（比較）、<b>E</b>motions（別の感情を呼び起こす）、<b>P</b>ushing away（一時的に脇に置く）、<b>T</b>houghts（別のことを考える）、<b>S</b>ensations（別の感覚刺激）。</dd></div>
+        <div class="sk"><dt>自己鎮静<small>Self-Soothe</small></dt><dd>視覚・聴覚・嗅覚・味覚・触覚（と体の動き）を使って自分をなだめる。</dd></div>
+        <div class="sk"><dt>IMPROVE</dt><dd>その瞬間を少しましにする：<b>I</b>magery（イメージ）、<b>M</b>eaning（意味を見いだす）、<b>P</b>rayer（祈り・より大きなものへの開かれ）、<b>R</b>elaxing actions（リラックス）、<b>O</b>ne thing in the moment（今の一つに集中）、<b>V</b>acation（短い休息）、<b>E</b>ncouragement（自分を励ます）。</dd></div>
+      </dl>
+      <div class="callout c-rust">
+        <svg class="icon"><use href="#i-alert"/></svg>
+        <div><p><strong>TIPPの医学的な注意：</strong>冷水で顔を冷やす方法は心拍数を急に下げるため、心疾患・不整脈がある人、低体重などで心拍数が低くなっている人、服薬の影響がある人などは、事前に医師への確認が必要とされています。激しい運動も同様です。支援スタッフが指示・指導する技法ではありません。</p></div>
+      </div>
+      <h4>現実を受け入れるスキル</h4>
+      <dl>
+        <div class="sk"><dt>徹底的受容<small>Radical Acceptance</small></dt><dd>変えられない事実に抵抗し続ける苦しみを手放し、「それは起きた」と心の底から認める。諦めることでも、良いと認めることでもない。</dd></div>
+        <div class="sk"><dt>心の向きを変える<small>Turning the Mind</small></dt><dd>受容に向かう選択を、何度でもやり直す。一度決めて終わりではない。</dd></div>
+        <div class="sk"><dt>ウィリングネス<small>Willingness</small></dt><dd>状況が求めることに開かれた姿勢でいる。対になるのは、頑なに抵抗する「ウィルフルネス」。</dd></div>
+        <div class="sk"><dt>半分の微笑み・開いた手<small>Half-Smiling / Willing Hands</small></dt><dd>表情や手の形を少し和らげ、体から受容の姿勢をつくる。</dd></div>
+        <div class="sk"><dt>今の思考へのマインドフルネス</dt><dd>思考を事実ではなく「頭の中の出来事」として観察する。</dd></div>
+      </dl>
+      <p class="small muted">第2版には、物質使用などの嗜癖への危機に対応するスキル群（弁証法的断薬など）も含まれています。</p>
+      <div class="workex"><b>就労場面では：</b>電話で取引先に強く言われ、怒りで手が震える。STOPで席を立つ→呼吸をゆっくり整える→戻る前にメリット・デメリット（言い返すと短期的にはすっきりするが、長期的には信頼を失う）。</div>
+    </div>
+  </div>
+
+  <!-- Emotion regulation -->
+  <div class="acc-item" id="sk3">
+    <div class="acc-head" onclick="toggleOpen('sk3')"><div class="n" style="background:var(--amber)">3</div><div class="ttl"><b>感情調節スキル</b><span>感情を理解し、反応を変え、揺れにくい状態をつくる</span></div><svg class="icon chev"><use href="#i-chev"/></svg></div>
+    <div class="acc-body">
+      <h4>感情を理解する</h4>
+      <p class="small">感情は「情報」であり、行動を動機づけ、他者に何かを伝える働きを持ちます。感情そのものが問題なのではなく、感情に押し流された行動が問題になることがある、という捉え方です。感情は次のような一連の流れとして理解されます。</p>
+      <div class="flowrow"><span class="s">脆弱性要因</span><span class="ar">→</span><span class="s">きっかけの出来事</span><span class="ar">→</span><span class="s">解釈</span><span class="ar">→</span><span class="s">体の変化</span><span class="ar">→</span><span class="s">表情・行動の衝動</span><span class="ar">→</span><span class="s">感情に名前をつける</span><span class="ar">→</span><span class="s">後に残る影響</span></div>
+      <h4>感情の反応を変える：事実確認から分岐する</h4>
+      <div class="diagram" style="margin:10px 0">
+        <svg viewBox="0 0 640 250" role="img" aria-label="事実確認から問題解決と反対行動へ分岐する図">
+          <defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#5B6773"/></marker></defs>
+          <rect x="200" y="12" width="240" height="56" rx="12" fill="#1B2A38"/>
+          <text x="320" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">事実確認（Check the Facts）</text>
+          <text x="320" y="58" text-anchor="middle" font-size="12" fill="#E9C38F">感情とその強さは、事実に合っているか？</text>
+          <path d="M270 70 L150 128" stroke="#5B6773" stroke-width="2" marker-end="url(#ah2)"/>
+          <path d="M370 70 L490 128" stroke="#5B6773" stroke-width="2" marker-end="url(#ah2)"/>
+          <text x="205" y="98" text-anchor="end" font-size="13" font-weight="700" fill="#1E6E66">合っている</text>
+          <text x="438" y="98" font-size="13" font-weight="700" fill="#9A6526">合っていない／効果的でない</text>
+          <rect x="30" y="134" width="250" height="100" rx="12" fill="#E3F0EE" stroke="#1E6E66" stroke-width="2"/>
+          <text x="155" y="164" text-anchor="middle" font-size="16" font-weight="700" fill="#1E6E66">問題解決</text>
+          <text x="155" y="190" text-anchor="middle" font-size="12.5" fill="#1B2A38">感情を生んでいる状況そのものに</text>
+          <text x="155" y="210" text-anchor="middle" font-size="12.5" fill="#1B2A38">働きかける</text>
+          <rect x="360" y="134" width="250" height="100" rx="12" fill="#F6EADA" stroke="#B97D33" stroke-width="2"/>
+          <text x="485" y="164" text-anchor="middle" font-size="16" font-weight="700" fill="#9A6526">反対行動</text>
+          <text x="485" y="190" text-anchor="middle" font-size="12.5" fill="#1B2A38">感情が促す行動の反対を</text>
+          <text x="485" y="210" text-anchor="middle" font-size="12.5" fill="#1B2A38">「丸ごと」行う</text>
+        </svg>
+      </div>
+      <dl>
+        <div class="sk"><dt>反対行動の例</dt><dd>不安（事実に合わない）→避けずに近づく ／ 恥（事実に合わない）→隠れずに人前に出る ／ 怒り→攻撃せず、穏やかに距離をとるか相手に少し親切にする ／ 悲しみ→引きこもらず活動する。表情や姿勢も含めて「丸ごと」行うことが重要とされます。</dd></div>
+      </dl>
+      <h4>感情に揺れにくい状態をつくる：ABC PLEASE</h4>
+      <dl>
+        <div class="sk"><dt>A：快の体験を積む<small>Accumulate positive emotions</small></dt><dd>短期（今日の小さな楽しみ）と長期（価値に沿った目標に向けた行動）の両方。</dd></div>
+        <div class="sk"><dt>B：達成感を育てる<small>Build mastery</small></dt><dd>少しだけ難しいことに取り組み、「できた」を積み重ねる。</dd></div>
+        <div class="sk"><dt>C：前もって備える<small>Cope ahead</small></dt><dd>難しい場面を事前に想像し、どう対処するかをリハーサルしておく。</dd></div>
+        <div class="sk"><dt>PLEASE</dt><dd><b>PL</b>：体の病気の治療（treat PhysicaL illness）、<b>E</b>：バランスのよい食事、<b>A</b>：気分を変える物質を避ける、<b>S</b>：バランスのよい睡眠、<b>E</b>：運動。体の状態が感情の揺れやすさに影響するという考え方。</dd></div>
+      </dl>
+      <p class="small muted">感情が極端に高まり、スキルが機能しなくなる「スキルの破綻点」を知り、そのときは苦悩耐性スキルに切り替える、という整理も第2版に含まれます。</p>
+      <div class="workex"><b>就労場面では：</b>初出勤の前夜に「絶対に失敗する」と強い不安。事実確認（失敗が確実だという根拠は？）→不安が事実に見合わない部分は反対行動（予定どおり家を出る）、見合う部分は問題解決（持ち物と経路を前夜に確認）。前もって備える（朝の流れを頭の中でリハーサル）。</div>
+    </div>
+  </div>
+
+  <!-- Interpersonal -->
+  <div class="acc-item" id="sk4">
+    <div class="acc-head" onclick="toggleOpen('sk4')"><div class="n" style="background:var(--rust)">4</div><div class="ttl"><b>対人関係効果性スキル</b><span>目的を果たし、関係を保ち、自分を大切にする</span></div><svg class="icon chev"><use href="#i-chev"/></svg></div>
+    <div class="acc-body">
+      <p class="small" style="margin-top:12px">対人場面には3つの目標があり、場面ごとに<strong>どれを優先するか</strong>を先に決めることが出発点になります。それぞれに対応するスキルがあります。</p>
+      <dl>
+        <div class="sk"><dt>DEAR MAN<small>目的を果たす</small></dt><dd><b>D</b>escribe（状況を事実で描写）、<b>E</b>xpress（気持ちや意見を表現）、<b>A</b>ssert（はっきり求める・断る）、<b>R</b>einforce（応じてもらえた場合の良い結果を前もって伝える）、<b>M</b>indful（目的に集中し、話がそれても繰り返し戻る）、<b>A</b>ppear confident（自信のある態度で）、<b>N</b>egotiate（代替案で交渉する）。</dd></div>
+        <div class="sk"><dt>GIVE<small>関係を保つ</small></dt><dd><b>G</b>entle（穏やかに。攻撃・脅し・批判をしない）、<b>I</b>nterested（関心を示して聴く）、<b>V</b>alidate（相手の立場を承認する）、<b>E</b>asy manner（肩の力を抜いた態度）。</dd></div>
+        <div class="sk"><dt>FAST<small>自尊心を保つ</small></dt><dd><b>F</b>air（自分にも相手にも公平に）、（no）<b>A</b>pologies（必要以上に謝らない）、<b>S</b>tick to values（自分の価値観を守る）、<b>T</b>ruthful（正直に）。</dd></div>
+        <div class="sk"><dt>求める強さを決める</dt><dd>相手の能力、自分の優先順位、関係性、タイミングなどを考えて、どのくらい強く求めるか（断るか）を決める。</dd></div>
+        <div class="sk"><dt>中道を歩む<small>Walking the Middle Path（第2版）</small></dt><dd>弁証法的に考える、自分と他者を承認する、行動を変える原理（強化・シェイピングなど）を理解する。白か黒かの極端を避けるスキル。</dd></div>
+        <div class="sk"><dt>関係を築く・終える<small>（第2版）</small></dt><dd>新しい関係をつくり、傷つける関係を終えるためのスキル。</dd></div>
+      </dl>
+      <div class="workex"><b>就労場面では（合理的配慮の依頼）：</b>「午後になると集中が続かず、入力ミスが増えています（D）。このままだとご迷惑をかけるのが心配です（E）。15時に10分の休憩をいただけないでしょうか（A）。そうすればミスを減らせると思います（R）。難しければ、作業の順番を変える形でも構いません（N）」。</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 9. EVIDENCE -->
+<section id="s-evidence">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-flask"/></svg>09 ｜ エビデンス</span>
+  <h2>何が、どこまで示されているか</h2>
+  <div class="rule"></div>
+  <p>DBTは、心理療法の中でもRCTの蓄積が多い治療の一つです。ただし、<strong>「効果がある」ことと「他の構造化された治療よりも優れている」ことは別の問い</strong>であり、対象や形式によって根拠の強さは大きく異なります。</p>
+  <div class="legend">
+    <span><span class="badge b-hi">確度：高</span> 複数の質の高い研究で一貫</span>
+    <span><span class="badge b-mid">確度：中</span> 支持はあるが限界・不一致あり</span>
+    <span><span class="badge b-lo">確度：低</span> 予備的・小規模・結果が不確定</span>
+  </div>
+  <div class="ev">
+    <div class="card">
+      <h4>ボーダーラインパーソナリティ症（BPD）への包括的DBT <span class="badge b-mid">確度：中</span></h4>
+      <p>初期のRCT群では、通常治療と比べて自殺企図などの行動、入院、治療からの脱落の減少が報告されました。Cochraneレビュー（2020年、75件のRCT）は、心理療法全体として通常治療に比べBPDの重症度や自殺関連の指標などを改善するとしつつ、<strong>エビデンスの確実性は「低い」</strong>と評価し、療法のタイプ別の比較では明確な差を示していません。また、DBTと一般精神科管理（GPM）を比べたRCTでは、両群が同程度に改善しました。</p>
+      <p class="src">Linehan et al., 1991／Storebø et al., 2020（Cochrane）／McMain et al., 2009</p>
+    </div>
+    <div class="card">
+      <h4>APA第12部会（臨床心理学）による評価の変遷 <span class="badge b-note">位置づけ</span></h4>
+      <p>BPDに対するDBTは、1998年の基準で「強い研究的支持（Strong Research Support）」と評価されました。一方、メタ分析を重視する2015年の基準では「再評価待ち」となっています。「APAが認定した治療」と単純に言い切れない点には注意が必要です。</p>
+      <p class="src">Society of Clinical Psychology（APA Division 12）</p>
+    </div>
+    <div class="card">
+      <h4>構成要素の分解研究 <span class="badge b-mid">確度：中</span></h4>
+      <p>スキル訓練＋ケースマネジメント、個人療法のみ（スキル訓練なし）、標準DBTの3条件を比較したRCTでは、自殺企図は3条件とも減少しました。一方、自傷の頻度や抑うつ・不安などでは、<strong>スキル訓練を含む条件のほうが優位</strong>とされました。開発者グループによる単一の試験である点には留意が必要です。</p>
+      <p class="src">Linehan et al., 2015（JAMA Psychiatry）</p>
+    </div>
+    <div class="card">
+      <h4>自傷のリスクが高い青年（DBT-A） <span class="badge b-mid">確度：中</span></h4>
+      <p>青年版DBTは、比較条件と比べて自傷や自殺企図の減少を示したRCTが報告されています。</p>
+      <p class="src">Mehlum et al., 2014／McCauley et al., 2018</p>
+    </div>
+    <div class="card">
+      <h4>スキル訓練単独・診断を限定しない活用 <span class="badge b-lo">確度：低〜中</span></h4>
+      <p>他の様式を伴わないスキル訓練単独の17件の試験を検討したシステマティックレビューは、さまざまな行動への効果について「予備的な」支持があるとまとめています。研究の質や対象のばらつきが大きく、包括的DBTの効果をそのまま当てはめることはできません。</p>
+      <p class="src">Valentine et al., 2015</p>
+    </div>
+    <div class="card">
+      <h4>成人ADHDへのDBTベースの集団療法 <span class="badge b-lo">確度：低〜中・結果が一貫しない</span></h4>
+      <p>小規模RCTでは、治療を完了し服薬状況が安定した参加者でADHD症状の減少が見られました。ノルウェーの多施設RCT（14週）では、通常治療と比べて自己評価の実行機能やADHD症状が改善した一方、治療直後の感情調節には有意な効果がありませんでした。他方、ドイツの大規模試験（COMPAS）では、構造化された集団療法は個別の臨床的管理を上回りませんでした。</p>
+      <p class="src">Hirvikoski et al., 2011／Halmøy et al., 2022／Philipsen et al., 2015</p>
+    </div>
+    <div class="card">
+      <h4>就労に特化した発展版（DBT-ACES、DBT-SE） <span class="badge b-lo">確度：低</span></h4>
+      <p>DBT-ACESは、標準DBTを修了した人を対象に、就労と自立（公的支援からの移行）を目標とする上級プログラムです。実行可能性を検討した研究では、競争的雇用に就く人の増加などが報告されましたが、対照群のない前後比較です。英国では就労スキルに特化したDBT-SEのRCTが登録されていますが、本資料作成時点で結果論文は確認できていません。</p>
+      <p class="src">Comtois et al., 2010／Feigenbaum, 2018／ISRCTN17346075</p>
+    </div>
+    <div class="card">
+      <h4>過剰統制への適応版（RO-DBT） <span class="badge b-lo">確度：低</span></h4>
+      <p>感情を抑え込みすぎる「過剰統制」の傾向を標的にした派生版です。治療抵抗性うつ病を対象としたRCTでは、主要評価時点（12か月）で通常治療との有意差は示されませんでした。「我慢しすぎる」タイプへの関心は高いものの、根拠はまだ限られています。</p>
+      <p class="src">Lynch et al., 2020</p>
+    </div>
+  </div>
+  <div class="callout c-amber">
+    <svg class="icon"><use href="#i-info"/></svg>
+    <div><p>食行動症・摂食症、物質使用症、PTSD（DBT-PE）などへの適用研究もありますが、本資料では個別の検証を行っていないため詳細は扱いません。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 10. PRACTICE -->
+<section id="s-practice" class="alt">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-brief"/></svg>10 ｜ 現場での活かし方</span>
+  <h2>就労移行支援での活かし方と、役割の境界</h2>
+  <div class="rule"></div>
+  <p>就労移行支援のスタッフはDBTの治療者ではありません。その前提のうえで、<strong>DBTを参考にした関わり（DBT-informed）</strong>として取り入れられることと、条件が必要なこと、専門職に委ねることを整理します。</p>
+  <div class="roles">
+    <div class="role ok">
+      <h4><svg class="icon"><use href="#i-check"/></svg>支援の姿勢として取り入れる</h4>
+      <ul>
+        <li>承認の6レベルを意識した聴き方</li>
+        <li>バイオソーシャル理論の視点で、行動を「性格」ではなく相互作用として理解する</li>
+        <li>「受容」と「変化」の両方を一つの面談に含める</li>
+        <li>遅刻・欠席など生活の質に関わる行動の、責めない振り返り（チェーン分析を参考に）</li>
+        <li>実習先への説明や配慮調整（環境の構造化）</li>
+        <li>ケース会議での支援者同士の相互支援</li>
+      </ul>
+    </div>
+    <div class="role cond">
+      <h4><svg class="icon"><use href="#i-pause"/></svg>条件が整えば行う</h4>
+      <ul>
+        <li>講座でスキルを扱う：研修を受けた担当者、心理職の監修、危機対応手順の整備を前提に。「DBT」とは名乗らず「DBTのスキルを参考にした講座」と位置づける</li>
+        <li>利用者が治療で学んでいるスキルの練習を支える：本人の同意のもと、主治医・治療者と方針を共有して</li>
+      </ul>
+    </div>
+    <div class="role ref">
+      <h4><svg class="icon"><use href="#i-shield"/></svg>専門職に委ねる</h4>
+      <ul>
+        <li>自傷・自殺念慮・自殺企図への対応（事業所の危機対応手順に従い、主治医・関係機関へつなぐ）</li>
+        <li>自傷・自殺関連行動のチェーン分析</li>
+        <li>診断に関する判断</li>
+        <li>包括的DBTの実施、時間外のコーチング</li>
+        <li>TIPPなど身体に作用する技法の指導</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>「承認 → 変化」の言葉かけ例</h3>
+  <p class="small muted">承認で土台を整えてから変化の話に進みます。順番を逆にしたり、承認を省いたりしないことがポイントです。</p>
+  <p class="phrase-scene">面接練習で頭が真っ白になった</p>
+  <div class="phrase">
+    <div class="va"><span class="lab">承認</span>「本番に近い形だと、頭が真っ白になるくらい緊張しますよね。それだけ真剣に取り組んでいるということだと思います」</div>
+    <div class="ch"><span class="lab">変化</span>「真っ白になったとき、最初の一言だけ決めておくとしたら、何がいいでしょう。一緒に考えてみませんか」</div>
+  </div>
+  <p class="phrase-scene">「どうせ自分なんか採用されない」と応募をやめようとする</p>
+  <div class="phrase">
+    <div class="va"><span class="lab">承認</span>「不採用が続くと、そう思いたくなるのは自然なことです。それだけ傷ついてきたということですよね」</div>
+    <div class="ch"><span class="lab">変化</span>「そのうえで、今週は1社だけ、条件を一緒に確認してから出してみるのはどうでしょう」</div>
+  </div>
+  <p class="phrase-scene">職場の同僚の一言に強い怒りを感じている</p>
+  <div class="phrase">
+    <div class="va"><span class="lab">承認</span>「その言い方をされたら、腹が立つのはもっともだと思います」</div>
+    <div class="ch"><span class="lab">変化</span>「明日その人と顔を合わせるとき、関係を保つことと、言いたいことを伝えること、どちらを優先したいですか」</div>
+  </div>
+
+  <h3>支援者自身のために</h3>
+  <div class="grid2">
+    <div class="card"><h4>限界を率直に伝える</h4><p class="small mb0">DBTでは、治療者が自分の限界（対応できる時間や範囲）を観察し、率直に伝えることが重視されます。限界を隠して無理を重ねると、やがて関係そのものを損ねるという考え方です。支援者の境界設定にもそのまま通じます。</p></div>
+    <div class="card"><h4>一人で抱えない</h4><p class="small mb0">DBTがコンサルテーションチームを「治療の必須要素」としているのは、感情の波の大きい支援が支援者を消耗させることを前提にしているからです。ケース会議を「方針決め」だけでなく、支援者を支える場としても機能させることが参考になります。</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 11. CRITIQUE -->
+<section id="s-critique">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-search"/></svg>11 ｜ 批判的考察</span>
+  <h2>DBTの限界と、取り入れるときの注意</h2>
+  <div class="rule"></div>
+  <div class="crit"><h4>他の構造化された治療と比べた優位性は示されていない</h4><p>DBTと一般精神科管理が同程度だった試験や、療法間の明確な差を示さなかったCochraneレビューからは、「構造化され、一貫した関わり」という共通要因の寄与も考えられます。DBTだけが唯一の正解というわけではありません。</p></div>
+  <div class="crit"><h4>開発者・関係者による研究が多い</h4><p>多くの治療法と同様に、初期の研究の多くは開発者自身やその関係者によって行われています。研究者の忠誠効果（自分の治療法に有利な結果が出やすい傾向）を考慮し、独立した研究者による再現を重視する必要があります。</p></div>
+  <div class="crit"><h4>資源の多さと「名ばかりDBT」</h4><p>包括的DBTは、個人療法・スキル訓練・コーチング・コンサルテーションチームを必要とします。多くの現場で完全な実施は難しく、「DBT」と名乗るプログラムの中身にはばらつきがあります。名称だけで効果を期待することはできません。</p></div>
+  <div class="crit"><h4>スキル訓練単独・他の診断への外挿</h4><p>スキル訓練単独や、ADHDなど他の対象への研究は、結果が一貫せず質にもばらつきがあります。「BPDで効果があったから、他の利用者にも効く」という推論は慎重にすべきです。</p></div>
+  <div class="crit"><h4>バイオソーシャル理論の使い方の危うさ</h4><p>「無効化する環境」という概念は、使い方によっては家族を一方的に責める物語になりえます。理論はあくまで理解を助ける仮説であり、一人の利用者の生育歴を断定的に説明する道具ではありません。</p></div>
+  <div class="crit"><h4>診断名のスティグマ</h4><p>ボーダーラインパーソナリティ症（旧称：境界性パーソナリティ障害）という診断名には強いスティグマが伴い、支援者の見方を固定させる危険があります。DBTが行動を「機能」で理解し、本人を責めない姿勢を重視していることは、むしろ診断名で人を見ないための視点として活かすべきでしょう。</p></div>
+  <div class="crit"><h4>文化的な適合性</h4><p>DBTは米国で開発され、禅の実践を技法として取り入れています。宗教的な文脈から切り離した「技法化」への批判や、日本の感情表現や対人関係の規範に合わせた調整の必要性も指摘されています。日本語の文献や研修機会が限られることも、普及と質の確保の課題です。</p></div>
+  <div class="crit"><h4>スキルの安全性と「知っている」と「使える」の差</h4><p>TIPPのように身体に作用する技法には医学的な注意が伴います。また、スキルの名前を知っていることと、強い感情の中で実際に使えることの間には大きな差があり、その差を埋めるのが本来はコーチングや個人療法の役割です。</p></div>
+</div>
+</section>
+
+<!-- 12. TERMS -->
+<section id="s-terms" class="alt">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-chat"/></svg>12 ｜ 用語メモ</span>
+  <h2>訳語と表記について</h2>
+  <div class="rule"></div>
+  <dl class="terms">
+    <dt>ボーダーラインパーソナリティ症（BPD）</dt>
+    <dd>Borderline Personality Disorder の訳語。DSM-5（2014年日本語版）では「境界性パーソナリティ障害」でしたが、DSM-5-TR日本語版（2023年）では、日本精神神経学会が disorder を原則「障害」ではなく「症」と訳す方針を採り、「ボーダーラインパーソナリティ症」に改められました。本資料はこの新しい表記を用います。旧称も医療・行政の文書や書籍では今も広く見られるため、両方を知っておくと混乱を防げます。診断書や支援計画の記載は、主治医の記載に合わせるのが基本です。ICD-11では個別の病型ではなく「パーソナリティ症」と「ボーダーラインパターン」の組み合わせで記述されます。</dd>
+    <dt>食行動症・摂食症</dt>
+    <dd>DSM-5-TR日本語版の章名に合わせた表記です。</dd>
+    <dt>承認（バリデーション）</dt>
+    <dd>Validation の訳。「認証」「是認」と訳される場合もあります。</dd>
+    <dt>苦悩耐性／感情調節／対人関係効果性</dt>
+    <dd>Distress Tolerance／Emotion Regulation／Interpersonal Effectiveness の訳。「苦痛耐性」「感情調整」「対人関係保持」など、書籍によって訳語が異なります。</dd>
+    <dt>徹底的受容</dt>
+    <dd>Radical Acceptance の訳。「根本的受容」とも訳されます。</dd>
+  </dl>
+</div>
+</section>
+
+<!-- 13. REFS -->
+<section id="s-refs">
+<div class="wrap fade">
+  <span class="eyebrow"><svg class="icon"><use href="#i-book"/></svg>13 ｜ 参考文献・情報源</span>
+  <h2>参考文献</h2>
+  <div class="rule"></div>
+  <div class="refgroup">理論・マニュアル</div>
+  <ol class="refs">
+    <li>Linehan, M. M. (1993). <i>Cognitive-Behavioral Treatment of Borderline Personality Disorder.</i> Guilford Press.</li>
+    <li>Linehan, M. M. (2014). <i>DBT Skills Training Manual</i> (2nd ed.). Guilford Press.／Revised Edition (2025).</li>
+    <li>Linehan, M. M. (1997). Validation and psychotherapy. In A. C. Bohart & L. S. Greenberg (Eds.), <i>Empathy Reconsidered</i>. American Psychological Association.</li>
+    <li>Rogers, C. R. (1961). <i>On Becoming a Person.</i> Houghton Mifflin.</li>
+    <li>Shenk, C. E., & Fruzzetti, A. E. (2011). The impact of validating and invalidating responses on emotional reactivity. <i>Journal of Social and Clinical Psychology, 30</i>(1). <a href="https://pure.psu.edu/en/publications/the-impact-of-validating-and-invalidating-responses-on-emotional-/" target="_blank" rel="noopener">Penn State</a></li>
+    <li>Greville-Harris, M., Hempel, R., et al. (2016). The power of invalidating communication: Receiving invalidating feedback predicts threat-related emotional, physiological, and social responses. <i>Journal of Social and Clinical Psychology, 35</i>(6), 471–493. <a href="https://doi.org/10.1521/jscp.2016.35.6.471" target="_blank" rel="noopener">doi:10.1521/jscp.2016.35.6.471</a></li>
+    <li>Crowell, S. E., Beauchaine, T. P., & Linehan, M. M. (2009). A biosocial developmental model of borderline personality. <i>Psychological Bulletin, 135</i>(3), 495–510.</li>
+    <li>マッケイ, M., ウッド, J. C., ブラントリー, J.（著）遊佐安一郎（訳）(2025).『弁証法的行動療法 実践トレーニングブック 増補改訂第2版』星和書店. <a href="https://ndlsearch.ndl.go.jp/en/books/R100000002-I034083408" target="_blank" rel="noopener">国立国会図書館サーチ</a></li>
+    <li>井合真海子 ほか (2021). 弁証法的行動療法におけるマインドフルネス. 心理学評論, 64(4), 460–475. <a href="https://www.jstage.jst.go.jp/article/sjpr/64/4/64_460/_article/-char/ja" target="_blank" rel="noopener">J-STAGE</a></li>
+  </ol>
+  <div class="refgroup">効果研究</div>
+  <ol class="refs" start="10">
+    <li>Linehan, M. M., Armstrong, H. E., Suarez, A., Allmon, D., & Heard, H. L. (1991). Cognitive-behavioral treatment of chronically parasuicidal borderline patients. <i>Archives of General Psychiatry, 48</i>(12), 1060–1064.</li>
+    <li>Storebø, O. J., Stoffers-Winterling, J. M., Völlm, B. A., et al. (2020). Psychological therapies for people with borderline personality disorder. <i>Cochrane Database of Systematic Reviews</i>, CD012955. <a href="https://pubmed.ncbi.nlm.nih.gov/32368793/" target="_blank" rel="noopener">PubMed</a>／<a href="https://www.cochrane.org/CD012955" target="_blank" rel="noopener">平易な要約（Cochrane）</a></li>
+    <li>Stoffers-Winterling, J. M., Storebø, O. J., et al. (2022). Psychotherapies for borderline personality disorder: a focused systematic review and meta-analysis. <i>British Journal of Psychiatry, 221</i>(3). <a href="https://doi.org/10.1192/bjp.2021.204" target="_blank" rel="noopener">doi:10.1192/bjp.2021.204</a></li>
+    <li>McMain, S. F., Links, P. S., Gnam, W. H., et al. (2009). A randomized trial of dialectical behavior therapy versus general psychiatric management for borderline personality disorder. <i>American Journal of Psychiatry, 166</i>(12). <a href="https://psychiatryonline.org/doi/10.1176/appi.ajp.2009.09010039" target="_blank" rel="noopener">Psychiatry Online</a></li>
+    <li>Linehan, M. M., Korslund, K. E., Harned, M. S., et al. (2015). Dialectical behavior therapy for high suicide risk in individuals with borderline personality disorder: a randomized clinical trial and component analysis. <i>JAMA Psychiatry, 72</i>(5). <a href="https://doi.org/10.1001/jamapsychiatry.2014.3039" target="_blank" rel="noopener">doi:10.1001/jamapsychiatry.2014.3039</a></li>
+    <li>Mehlum, L., Tørmoen, A. J., Ramberg, M., et al. (2014). Dialectical behavior therapy for adolescents with repeated suicidal and self-harming behavior: a randomized trial. <i>Journal of the American Academy of Child & Adolescent Psychiatry, 53</i>(10), 1082–1091.</li>
+    <li>McCauley, E., Berk, M. S., Asarnow, J. R., et al. (2018). Efficacy of dialectical behavior therapy for adolescents at high risk for suicide: a randomized clinical trial. <i>JAMA Psychiatry, 75</i>(8), 777–785.</li>
+    <li>Valentine, S. E., Bankoff, S. M., Poulin, R. M., Reidler, E. B., & Pantalone, D. W. (2015). The use of dialectical behavior therapy skills training as stand-alone treatment: a systematic review of the treatment outcome literature. <i>Journal of Clinical Psychology, 71</i>(1), 1–20. <a href="https://pubmed.ncbi.nlm.nih.gov/25042066" target="_blank" rel="noopener">PubMed</a></li>
+    <li>Hirvikoski, T., Waaler, E., Alfredsson, J., et al. (2011). Reduced ADHD symptoms in adults with ADHD after structured skills training group: results from a randomized controlled trial. <i>Behaviour Research and Therapy, 49</i>, 175–185.</li>
+    <li>Halmøy, A., Ring, A. E., Gjestad, R., et al. (2022). Dialectical behavioral therapy-based group treatment versus treatment as usual for adults with attention-deficit hyperactivity disorder: a multicenter randomized controlled trial. <i>BMC Psychiatry, 22</i>, 738. <a href="https://pubmed.ncbi.nlm.nih.gov/36443712/" target="_blank" rel="noopener">PubMed</a></li>
+    <li>Philipsen, A., Jans, T., Graf, E., et al. (2015). Effects of group psychotherapy, individual counseling, methylphenidate, and placebo in the treatment of adult attention-deficit/hyperactivity disorder: a randomized clinical trial. <i>JAMA Psychiatry, 72</i>(12).</li>
+    <li>Comtois, K. A., Kerbrat, A. H., Atkins, D. C., Harned, M. S., & Elwood, L. (2010). Recovery from disability for individuals with borderline personality disorder: a feasibility trial of DBT-ACES. <i>Psychiatric Services, 61</i>(11), 1106–1111. <a href="https://psychiatryonline.org/doi/10.1176/ps.2010.61.11.1106" target="_blank" rel="noopener">Psychiatry Online</a></li>
+    <li>Feigenbaum, J. D. (2018). Dialectical behavioural therapy skills for employment. In M. Swales (Ed.), <i>The Oxford Handbook of Dialectical Behaviour Therapy</i>. Oxford University Press. <a href="https://discovery.ucl.ac.uk/id/eprint/10065483" target="_blank" rel="noopener">UCL Discovery</a></li>
+    <li>ISRCTN17346075. A randomised controlled trial of dialectical behavioural therapy skills for employment for people who experience difficulties in common with a personality disorder. <a href="https://www.isrctn.com/ISRCTN17346075" target="_blank" rel="noopener">ISRCTN</a></li>
+    <li>Lynch, T. R., Hempel, R. J., Whalley, B., et al. (2020). Refractory depression – mechanisms and efficacy of radically open dialectical behaviour therapy (RefraMED): findings of a randomised trial on benefits and harms. <i>British Journal of Psychiatry, 216</i>(4), 204–212. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7282863/" target="_blank" rel="noopener">PMC</a></li>
+  </ol>
+  <div class="refgroup">評価・動向・その他</div>
+  <ol class="refs" start="25">
+    <li>Society of Clinical Psychology (APA Division 12). Dialectical Behavior Therapy for Borderline Personality Disorder. <a href="https://div12.org/?p=8061" target="_blank" rel="noopener">div12.org</a></li>
+    <li>Behavioral Tech（Linehan Institute）. The Reach of DBT. <a href="https://behavioraltech.org/impact/" target="_blank" rel="noopener">behavioraltech.org</a></li>
+    <li>Carey, B. (2011, June 23). Expert on mental illness reveals her own fight. <i>The New York Times</i>.（紹介ページ：<a href="https://www.psychologicalscience.org/news/expert-on-mental-illness-reveals-her-own-fight.html" target="_blank" rel="noopener">Association for Psychological Science</a>）</li>
+    <li>CNN (2026, November). Borderline personality disorder is difficult to treat. Dr. Marsha Linehan’s DBT changed everything.（スペイン語版配信：<a href="https://krdo.com/news/2026/11/15/el-trastorno-limite-de-la-personalidad-es-dificil-de-tratar-la-terapia-de-la-dra-marsha-linehan-lo-cambio-todo" target="_blank" rel="noopener">KRDO</a>）</li>
+    <li>DBT Tokyo・一般社団法人長谷川メンタルヘルス研究所 (2026). DBT特別公開セミナー開催のお知らせ. <a href="https://prtimes.jp/main/html/rd/p/000000001.000192188.html" target="_blank" rel="noopener">PR TIMES</a></li>
+    <li>医学書院「DSM-5-TR 精神疾患の診断・統計マニュアル」書籍紹介（日本語版用語監修：日本精神神経学会, 2023）. <a href="https://www.igaku-shoin.co.jp/book/detail/112206" target="_blank" rel="noopener">医学書院</a></li>
+    <li>日本精神神経学会 精神科病名検討連絡会 (2014). DSM-5 病名・用語翻訳ガイドライン（初版）. 精神神経学雑誌, 116(6), 429–457. <a href="https://www.jspn.or.jp/uploads/uploads/files/activity/dsm-5_guideline.pdf" target="_blank" rel="noopener">日本精神神経学会</a></li>
+    <li>今日の臨床サポート「ボーダーラインパーソナリティ症/ボーダーラインパターン」. <a href="https://clinicalsup.jp/jpoc/contentpage.aspx?diseaseid=576" target="_blank" rel="noopener">今日の臨床サポート</a></li>
+    <li>MSDマニュアル プロフェッショナル版（日本語）「ボーダーラインパーソナリティ症（BPD）」. <a href="https://www.msdmanuals.com/ja-jp/professional/08-精神疾患/パーソナリティ症群/ボーダーラインパーソナリティ症-bpd" target="_blank" rel="noopener">MSDマニュアル</a></li>
+  </ol>
+</div>
+</section>
+
+</main>
+
+<footer>
+  <strong>岡村雄一郎</strong>
+</footer>
+
+<script>
+/* ---------- progress & nav ---------- */
+const prog = document.getElementById('progress');
+const tocButtons = Array.from(document.querySelectorAll('.toc button'));
+const sections = tocButtons.map(b => document.getElementById(b.dataset.target));
+function scrollToSection(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+tocButtons.forEach(b => b.addEventListener('click', () => scrollToSection(b.dataset.target)));
+function onScroll(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  let current = null;
+  sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < 140) current = i; });
+  tocButtons.forEach((b, i) => b.classList.toggle('active', i === current));
+  if (current !== null) {
+    const btn = tocButtons[current];
+    const bar = document.getElementById('tocInner');
+    const left = btn.offsetLeft - bar.clientWidth / 2 + btn.clientWidth / 2;
+    if (Math.abs(bar.scrollLeft - left) > 40) bar.scrollTo({left, behavior:'smooth'});
+  }
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+
+/* ---------- fade-in ---------- */
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: 0.06});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.fade').forEach(el => el.classList.add('in'));
+}
+
+/* ---------- accordions / toggles ---------- */
+function toggleOpen(id){ document.getElementById(id).classList.toggle('open'); }
+
+/* ---------- dilemma tabs ---------- */
+document.querySelectorAll('#dilemmaTabs button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#dilemmaTabs button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['d1','d2','d3'].forEach(id => document.getElementById(id).classList.toggle('active', id === btn.dataset.tab));
+  });
+});
+
+/* ---------- validation levels ---------- */
+document.querySelectorAll('#vlevels .vlevel').forEach(v => {
+  v.addEventListener('click', () => v.classList.toggle('open'));
+});
+document.querySelector('#vlevels .vlevel').classList.add('open');
+
+/* ---------- chain analysis stepper ---------- */
+const chainSteps = [
+  {short:'問題行動', sub:'特定する', title:'① 問題行動を具体的に特定する',
+   html:'<p>「やる気がない」「休みがち」ではなく、観察できる行動として定義します。</p><p><strong>例：</strong>月曜日の実習を、実習先にも事業所にも連絡せずに欠席した。</p><p class="small muted">曖昧な定義のままだと、分析が「性格」の話にすり替わりやすくなります。</p>'},
+  {short:'脆弱性', sub:'下地', title:'② 脆弱性要因：その日、崩れやすくなっていた下地',
+   html:'<p>きっかけの前から、本人を揺れやすくしていた条件を探します。</p><ul class="clean"><li>週末に夜更かしが続き、睡眠不足だった</li><li>金曜日に実習先で作業の手順を注意されていた</li><li>日曜日は一日誰とも話さずに過ごした</li></ul><p class="small muted">PLEASE（睡眠・食事・体調など）の視点が役立ちます。</p>'},
+  {short:'きっかけ', sub:'出来事', title:'③ きっかけとなった出来事',
+   html:'<p>連鎖の引き金になった、外側（または内側）の出来事です。</p><p><strong>例：</strong>日曜日の夜、実習先の担当者からのメール通知がスマートフォンに表示された（内容はまだ開いていない）。</p>'},
+  {short:'リンク', sub:'連鎖', title:'④ リンク：思考・感情・身体・行動の連鎖',
+   html:'<p>きっかけから問題行動までを、一つひとつの「輪」に分けて並べます。細かいほど、断ち切れる場所が見つかります。</p><div class="links"><span class="l">思考「また怒られる」</span><span class="a">→</span><span class="l">感情：不安・恥</span><span class="a">→</span><span class="l">身体：胸が締めつけられる</span><span class="a">→</span><span class="l">行動：メールを開かずに布団にもぐる</span><span class="a">→</span><span class="l">思考「明日行ったら怒られる」</span><span class="a">→</span><span class="l">朝、体が動かない</span><span class="a">→</span><span class="l">思考「今さら連絡したらもっと怒られる」</span></div>'},
+  {short:'結果', sub:'短期と長期', title:'⑤ 結果：なぜその行動は繰り返されるのか',
+   html:'<p><strong>短期的な結果：</strong>欠席を決めた瞬間に、不安が一時的に下がる。この「ほっとする感じ」が行動を強化します。</p><p><strong>長期的な結果：</strong>実習先からの信頼が下がる、自己評価がさらに下がる、次の実習日がもっと行きにくくなる。</p><p class="small muted">問題行動は、本人にとって何らかの「機能」を果たしています。そこを理解しないまま禁止しても、行動は変わりにくいとされます。</p>'},
+  {short:'解決分析', sub:'代わりの行動', title:'⑥ 解決分析：どの輪で、何をすれば鎖を断てるか',
+   html:'<ul class="clean"><li><strong>脆弱性に：</strong>実習前日の就寝時刻を決める（PLEASE）</li><li><strong>きっかけに：</strong>通知を見たら、その場で開いて事実を確認する（事実確認）</li><li><strong>「また怒られる」に：</strong>確かめる前に決めつけていないか点検する（事実確認）</li><li><strong>布団にもぐる衝動に：</strong>不安が事実に合わない部分は、反対行動として予定どおり準備する</li><li><strong>「今さら連絡したら」に：</strong>遅れても連絡できる文面の型を事前に作っておく（DEAR MAN）</li></ul><p class="small muted">一つの輪だけでなく、複数の輪に手立てを用意しておくのがコツです。</p>'},
+  {short:'修復', sub:'関係を戻す', title:'⑦ 修復：損なったものを回復する',
+   html:'<p>問題行動によって生じた影響を、本人ができる形で回復します。罰ではなく、関係と自己評価を立て直すための行動です。</p><p><strong>例：</strong>実習先に欠席の連絡と謝罪をし、次回の参加意思を伝える。伝え方は支援者と一緒に準備する。</p>'}
+];
+const track = document.getElementById('chainTrack');
+const panel = document.getElementById('chainPanel');
+const prevBtn = document.getElementById('chainPrev');
+const nextBtn = document.getElementById('chainNext');
+let chainIdx = 0;
+chainSteps.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.innerHTML = s.short + '<span>' + s.sub + '</span>';
+  b.addEventListener('click', () => renderChain(i));
+  track.appendChild(b);
+});
+function renderChain(i){
+  chainIdx = i;
+  Array.from(track.children).forEach((b, j) => {
+    b.classList.toggle('active', j === i);
+    b.classList.toggle('done', j < i);
+  });
+  panel.innerHTML = '<h4>' + chainSteps[i].title + '</h4>' + chainSteps[i].html;
+  prevBtn.disabled = i === 0;
+  nextBtn.disabled = i === chainSteps.length - 1;
+}
+prevBtn.addEventListener('click', () => { if (chainIdx > 0) renderChain(chainIdx - 1); });
+nextBtn.addEventListener('click', () => { if (chainIdx < chainSteps.length - 1) renderChain(chainIdx + 1); });
+renderChain(0);
+</script>
+</body>
+</html>
